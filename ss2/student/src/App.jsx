@@ -37,6 +37,7 @@ function App() {
 
   return (
       <>
+        <h1>Student Information</h1>
         <table>
           <thead>
             <th>Company</th>
