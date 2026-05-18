@@ -55,6 +55,9 @@ class ListComponent extends React.Component {
                         <th>STT</th>
                         <th>ID</th>
                         <th>Tên</th>
+                        <th>Tuổi</th>
+                        <th>Email</th>
+                        <th>Điểm</th>
                         <th>Xoá</th>
                     </tr>
                     </thead>
@@ -65,6 +68,9 @@ class ListComponent extends React.Component {
                             <td>{i + 1}</td>
                             <td>{student.id}</td>
                             <td>{student.name}</td>
+                            <td>{student.age}</td>
+                            <td>{student.email}</td>
+                            <td>{student.score}</td>
 
                             <td>
                                 <button

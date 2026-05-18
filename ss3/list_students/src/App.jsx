@@ -7,7 +7,6 @@ import ListComponent from "./component/ListComponent.jsx";
 function App() {
     return (
         <>
-            <HeaderComponent />
             <ListComponent/>
         </>
     )
