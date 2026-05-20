@@ -48,3 +48,19 @@ export function deleteById(id){
         }
     }
 }
+export const save = (student) => {
+
+    const newStudent = {
+        ...student,
+        id:
+            studentList.length > 0
+                ? Math.max(
+                ...studentList.map(
+                    s => s.id
+                )
+            ) + 1
+                : 1
+    };
+
+    studentList.push(newStudent);
+};
