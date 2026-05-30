@@ -1,0 +1,23 @@
+.furama-navbar {
+    background: #1f2937;
+}
+
+.navbar-brand {
+    color: #fbbf24 !important;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.nav-link:hover {
+    color: #fbbf24 !important;
+    transform: translateY(-2px);
+}
+
+.navbar {
+    min-height: 75px;
+}

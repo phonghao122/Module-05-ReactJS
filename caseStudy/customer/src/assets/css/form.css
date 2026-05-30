@@ -1,0 +1,17 @@
+.furama-header {
+    background: #1f2937;
+    color: #fbbf24;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+}
+
+.text-danger {
+    font-size: 14px;
+}

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a83283b-bbfb-404b-bf69-1d8330c3b4ca" name="Changes" comment="" />
+    <list default="true" id="9a83283b-bbfb-404b-bf69-1d8330c3b4ca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../caseStudy/customer/src/component/EditComponent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../caseStudy/customer/src/component/HeaderComponent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../caseStudy/customer/src/component/ListComponent.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +80,7 @@
       <workItem from="1779282712406" duration="3120000" />
       <workItem from="1780126983594" duration="55000" />
       <workItem from="1780134933810" duration="514000" />
-      <workItem from="1780135473185" duration="1839000" />
+      <workItem from="1780135473185" duration="7110000" />
     </task>
     <servers />
   </component>

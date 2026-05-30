@@ -1,0 +1,33 @@
+body {
+    background: #f8f9fa;
+}
+
+.furama-header {
+    background: #1f2937;
+    color: white;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table tbody tr:hover {
+    background-color: #fff8e1;
+    transition: 0.3s;
+}
+
+.badge {
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+.btn-warning {
+    color: #212529;
+    font-weight: 600;
+}
+
+h3 {
+    color: #fbbf24;
+}

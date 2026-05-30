@@ -1,47 +1,51 @@
-import React from "react";
-import { Button, Modal } from "react-bootstrap";
-import { deleteStudent } from "../service/studentService.js";
+import { Modal, Button } from "react-bootstrap";
+import { deleteCustomer } from "../service/customerService";
 
 function DeleteModal({
-                         isShow,
-                         closeModal,
-                         student,
-                         setReloading
+                         show,
+                         handleClose,
+                         customer,
+                         reloadData
                      }) {
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
 
-        deleteStudent(student.id);
+        await deleteCustomer(customer.id);
 
-        setReloading(prev => !prev);
+        reloadData();
 
-        closeModal();
+        handleClose();
     };
 
     return (
         <Modal
-            show={isShow}
-            onHide={closeModal}
+            show={show}
+            onHide={handleClose}
+            centered
         >
             <Modal.Header closeButton>
                 <Modal.Title>
-                    Xóa sinh viên
+                    Xóa Khách Hàng
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                Bạn có chắc muốn xóa sinh viên:
 
-                <strong>
-                    {" "}{student.name}
+                Bạn có chắc muốn xóa khách hàng:
+
+                <strong className="text-danger">
+                    {" "}{customer?.name}
                 </strong>
+
                 ?
+
             </Modal.Body>
 
             <Modal.Footer>
+
                 <Button
                     variant="secondary"
-                    onClick={closeModal}
+                    onClick={handleClose}
                 >
                     Hủy
                 </Button>
@@ -52,6 +56,7 @@ function DeleteModal({
                 >
                     Xóa
                 </Button>
+
             </Modal.Footer>
         </Modal>
     );

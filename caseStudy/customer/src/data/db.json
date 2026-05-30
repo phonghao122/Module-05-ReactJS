@@ -1,0 +1,40 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "name": "Nguyễn Văn An",
+      "room": "101",
+      "checkIn": "2026-05-28",
+      "status": "Đã trả phòng"
+    },
+    {
+      "id": "2",
+      "name": "Trần Thị Bình",
+      "room": "102",
+      "checkIn": "2026-05-27",
+      "status": "Đã trả phòng"
+    },
+    {
+      "id": "3",
+      "name": "Lê Văn Cường",
+      "room": "103",
+      "checkIn": "2026-05-29",
+      "status": "Đang ở"
+    },
+    {
+      "id": "4",
+      "name": "Phạm Thị Dung",
+      "room": "104",
+      "checkIn": "2026-05-30",
+      "status": "Đang ở"
+    },
+    {
+      "id": "5",
+      "name": "Hoàng Minh Đức",
+      "room": "105",
+      "checkIn": "2026-05-26",
+      "status": "Đã trả phòng"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
