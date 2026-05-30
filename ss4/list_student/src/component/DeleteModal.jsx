@@ -1,17 +1,17 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
-import { deleteById } from "../service/studentService.js";
+import { deleteStudent } from "../service/studentService.js";
 
 function DeleteModal({
                          isShow,
                          closeModal,
-                         deleteStudent,
+                         student,
                          setReloading
                      }) {
 
     const handleDelete = () => {
 
-        deleteById(deleteStudent.id);
+        deleteStudent(student.id);
 
         setReloading(prev => !prev);
 

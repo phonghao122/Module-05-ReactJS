@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-    getAll,
-    save
+import { getAllStudents
 } from "../service/studentService.js";
 
 import DeleteModal from "./DeleteModal.jsx";
+import {Link} from "react-router-dom";
 
 const ListComponent = () => {
 
@@ -31,8 +30,11 @@ const ListComponent = () => {
             score: ""
         });
 
+    const [search, setSearch] =
+        useState("");
+
     useEffect(() => {
-        setStudentList([...getAll()]);
+        setStudentList([...getAllStudents()]);
     }, [reloading]);
 
     const closeModal = () => {
@@ -53,98 +55,56 @@ const ListComponent = () => {
             [name]: value
         }));
     };
+    const handleSearch =
+        (event) => {
 
-    const handleAdd = () => {
+            setSearch(
+                event.target.value
+            );
+        };
 
-        if (
-            student.name.trim() === "" ||
-            student.age === "" ||
-            student.email.trim() === "" ||
-            student.score === ""
-        ) {
-            alert("Vui lòng nhập đầy đủ");
-            return;
-        }
-
-        save({
-            ...student,
-            age: Number(student.age),
-            score: Number(student.score)
-        });
-
-        setStudent({
-            name: "",
-            age: "",
-            email: "",
-            score: ""
-        });
-
-        setReloading(prev => !prev);
-    };
+    const filteredStudents =
+        studentList.filter(
+            (student) =>
+                student.name
+                    .toLowerCase()
+                    .includes(
+                        search
+                            .toLowerCase()
+                    )
+        );
 
     return (
         <>
             <h1>Danh sách sinh viên</h1>
 
-            <div className="row mb-4">
+            <Link
+                className=
+                    "btn btn-success btn-sm"
+                to="/create"
+            >
+                Add Student
+            </Link>
 
-                <div className="col">
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Tên sinh viên"
-                        className="form-control"
-                        value={student.name}
-                        onChange={handleChange}
-                    />
-                </div>
+            <div className="mt-3 mb-3">
 
-                <div className="col">
-                    <input
-                        type="number"
-                        name="age"
-                        placeholder="Tuổi"
-                        className="form-control"
-                        value={student.age}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="col">
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        className="form-control"
-                        value={student.email}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="col">
-                    <input
-                        type="number"
-                        step="0.1"
-                        name="score"
-                        placeholder="Điểm"
-                        className="form-control"
-                        value={student.score}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="col-auto">
-                    <button
-                        className="btn btn-success"
-                        onClick={handleAdd}
-                    >
-                        Thêm
-                    </button>
-                </div>
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder=
+                        "Search by name..."
+                    value={search}
+                    onChange={
+                        handleSearch
+                    }
+                />
 
             </div>
 
-            <table className="table table-striped table-dark">
+            <table
+                className=
+                    "table table-striped table-dark"
+            >
                 <thead>
                 <tr>
                     <th>STT</th>
@@ -158,32 +118,44 @@ const ListComponent = () => {
                 </thead>
 
                 <tbody>
-                {studentList.map((student, i) => (
-                    <tr key={student.id}>
-                        <td>{i + 1}</td>
-                        <td>{student.id}</td>
-                        <td>{student.name}</td>
-                        <td>{student.age}</td>
-                        <td>{student.email}</td>
-                        <td>{student.score}</td>
+                {filteredStudents.map(
+                    (student, i) => (
+                        <tr key={student.id}>
+                            <td>{i + 1}</td>
+                            <td>{student.id}</td>
+                            <td>{student.name}</td>
+                            <td>{student.age}</td>
+                            <td>{student.email}</td>
+                            <td>{student.score}</td>
 
-                        <td>
-                            <button
-                                onClick={() =>
-                                    handleOpenModal(student)
-                                }
-                                className="btn btn-sm btn-danger"
-                            >
-                                Xoá
-                            </button>
-                        </td>
-                    </tr>
-                ))}
+                            <td>
+                                <Link
+                                    to={`/edit/${student.id}`}
+                                    className=
+                                        "btn btn-warning btn-sm"
+                                >
+                                    Edit
+                                </Link>
+
+                                <button
+                                    onClick={() =>
+                                        handleOpenModal(
+                                            student
+                                        )
+                                    }
+                                    className=
+                                        "btn btn-sm btn-danger"
+                                >
+                                    Xoá
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
 
             <DeleteModal
-                deleteStudent={deleteStudent}
+                student={deleteStudent}
                 isShow={isShowModal}
                 closeModal={closeModal}
                 setReloading={setReloading}

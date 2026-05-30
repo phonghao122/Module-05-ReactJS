@@ -1,4 +1,4 @@
-const studentList = [
+const students = [
     {
         id: 1,
         name: "Nguyễn Văn A",
@@ -36,31 +36,49 @@ const studentList = [
     }
 ];
 
-export function getAll(){
-    return [...studentList]
+export function getAllStudents() {
+    return students;
 }
 
-export function deleteById(id){
-    for (let i = 0; i <studentList.length ; i++) {
-        if (studentList[i].id==id){
-            studentList.splice(i,1);
-            break
-        }
-    }
-}
-export const save = (student) => {
+export function addStudent(student) {
 
     const newStudent = {
         ...student,
         id:
-            studentList.length > 0
+            students.length > 0
                 ? Math.max(
-                ...studentList.map(
+                ...students.map(
                     s => s.id
                 )
             ) + 1
                 : 1
     };
 
-    studentList.push(newStudent);
-};
+    students.push(newStudent);
+
+    console.log(students);
+}
+
+export function findById(id) {
+    return students.find((student) => student.id === Number(id));
+}
+
+export function updateStudent(id, student) {
+    const index = students.findIndex(
+        student =>
+            student.id === Number(id));
+    if (index !== -1) {
+        students[index] = {
+            ...students[index],
+            ...student
+        };
+    }
+}
+
+export function deleteStudent(id) {
+    for (let i = 0; i < students.length; i++) {
+        if (students[i].id === Number(id)) {
+            students.splice(i, 1);
+        }
+    }
+}
